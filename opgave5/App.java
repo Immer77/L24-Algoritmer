@@ -3,7 +3,7 @@ package opgave5;
 public class App {
     public static void main(String[] args) {
         String s = "Jubiiii";
-        int k = 5;
+        int k = 3;
         System.out.println(find(s, k));
 
     }
@@ -11,7 +11,7 @@ public class App {
         boolean found = false;
         int i = 0;
         while(!found && i <= s.length() - k){
-            if(kens(s,k)){
+            if(kens(s,i,k)){
                 found = true;
             }else{
                 i++;
@@ -19,17 +19,16 @@ public class App {
         }
         return found;
     }
-    public static boolean kens(String s, int k){
+    public static boolean kens(String s, int i, int k){
         boolean foundDiff = false;
-        int j = 0;
-        int i = 0;
-        while (!foundDiff && j < s.length()) {
-            if(s.charAt(j) == s.charAt(j+1)){
+        int j = 1;
+        while (!foundDiff && j < k) {
+            if(s.charAt(i) != s.charAt(i+j)){
                 foundDiff = true;
             } else{
                 j++;
             }
         }
-        return foundDiff;
+        return !foundDiff;
     }
 }
